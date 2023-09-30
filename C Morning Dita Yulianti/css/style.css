@@ -1,0 +1,459 @@
+:root {
+  /* --primary: #b6895b; */
+  --primary: #7aa5d2;
+  --bg: #010101;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  /* tidak ada garis bawah pada link */
+  text-decoration: none;
+}
+
+/* nge scroll nya tidak instant */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg);
+  color: #fff;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  /* sejajar horizontal */
+  justify-content: space-between;
+  /* sejajar vertikal */
+  align-items: center;
+  /* 1 rem = 16px */
+  padding: 1.4rem 7%;
+  background-color: rgba(1, 1, 1, 0.8);
+  border-bottom: 1px solid #253a52;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  font-style: italic;
+}
+
+.navbar .navbar-logo span {
+  color: var(--primary);
+}
+
+.navbar .navbar-logo .heart-logo {
+  fill: #e7e8f5;
+}
+
+.navbar .navbar-nav a {
+  color: #fff;
+  /* kalau blok nanti turun ke bawah */
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+}
+
+.navbar .navbar-nav a:hover {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--primary);
+  /* menghilangkan border */
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+
+.navbar .navbar-nav a:hover::after {
+  /* kalau 1 itu garis nya penuh, maka pakai setengah saja */
+  transform: scaleX(0.5);
+}
+
+.navbar .navbar-extra a {
+  color: #fff;
+  /* atas bawah, kiri kanan */
+  margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra a:hover {
+  color: var(--primary);
+}
+
+#hamburger-menu {
+  display: none;
+}
+
+/* hero section */
+.hero {
+  min-height: 100vh;
+  /* untuk vertikal,, supaya item ke tengah gunakan align.
+    kalau horizontal, justify content */
+  display: flex;
+  align-items: center;
+  background-image: url("../img/header-bg.jpg");
+  background-repeat: no-repeat;
+  /* ukuran maksimal memenuhi layar */
+  background-size: cover;
+  background-position: center;
+  /* buat posisi relative supaya tidak mengganggu posisi aslinya*/
+  position: relative;
+}
+
+/* bikin gradasi di bawah background hero */
+/* elemen sudo */
+.hero::after {
+  /* content kosong supaya bisa di kasih style */
+  content: "";
+  display: block;
+  /* absolute biar nempel ke bawah */
+  /* tetapi elemen utama berikan relative posisi */
+  position: absolute;
+  width: 100%;
+  /* jangan terlalu tinggi karna cta ketutup tidak bisa diklik */
+  height: 30%;
+  /* garis nya kebawah */
+  bottom: 0;
+  /* mulai dari 0derajat, warna awal hitam sampai 3% 
+    ke warna putih sampai 25% */
+  /* rbga paling ujung adalah transparansi */
+  background: linear-gradient(
+    0deg,
+    rgba(1, 1, 3, 1) 8%,
+    rgba(255, 255, 255, 0) 50%
+  );
+}
+
+/* hero content */
+.hero .content {
+  padding: 1.4rem 7%;
+  max-width: 60rem;
+}
+
+.hero .content h1 {
+  font-size: 5em;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  /* jarak baris ke bawah */
+  line-height: 1.4;
+}
+
+.hero .content p {
+  font-size: 3rem;
+  color: #fff;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+}
+
+.hero .content p span {
+  color: var(--primary);
+}
+
+/* about section */
+.about,
+.project,
+.contact {
+  /* buat padding atas nya lebih besar
+    supaya ketika section diklik, maka tulisan tentang saya nya pas dan tidak tertutup header */
+  /* urutannya: atas, kiri-kanan, bawah */
+  padding: 8rem 7% 1.4rem;
+}
+
+.about h2,
+.project h2,
+.contact h2 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 3rem;
+}
+
+.about h2 span,
+.project h2 span,
+.contact h2 span {
+  color: var(--primary);
+}
+
+.about .row {
+  display: flex;
+}
+
+.about .row .about-img {
+  /* ukuran flexnya */
+  flex: 1 1 10rem;
+}
+
+.about .row .about-img img {
+  /* memenuhi ukuran flexnya */
+  width: 100%;
+}
+
+.about .row .content {
+  flex: 1 1 35rem;
+  /* atas-bawah, kiri-kanan */
+  padding: 0 1rem;
+}
+
+.about .row .content p {
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 100;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* project section */
+.project h2,
+.contact h2 {
+  margin-bottom: 1rem;
+}
+
+.project p,
+.contact p {
+  /* teks ke tengah */
+  text-align: center;
+  /* supaya tidak semua teks nya melebar ke samping */
+  max-width: 30rem;
+  margin: auto;
+  font-weight: 100;
+  line-height: 1.6;
+}
+
+.project .row {
+  display: flex;
+  /* jika banyak turun ke bawah */
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  justify-content: center;
+}
+
+.project .row .project-card {
+  text-align: center;
+  padding-bottom: 4rem;
+  margin: 1.2rem 1.2rem;
+  border: solid 1px #fff;
+}
+
+.project .row .project-card img {
+  width: 500px;
+  padding: 2rem 2rem;
+}
+
+.project .row .project-card .project-card-title {
+  margin: 1rem auto 0.5rem;
+}
+
+
+/* contact section */
+.contact .row {
+  display: flex;
+  margin-top: 2rem;
+  background-color: #222;
+}
+
+.contact .row .map {
+  flex: 1 1 45rem;
+  width: 100%;
+  /* width: 490px;
+  height: 490px; */
+  object-fit: cover;
+}
+.contact .row form {
+  flex: 1 1 45rem;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.contact .row form .input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  background-color: var(--bg);
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding-left: 2rem;
+}
+
+.contact .row form .input-group input {
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.5rem;
+  background: none;
+  color: #fff;
+}
+
+.contact .row form .btn {
+  margin-top: 3rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  background-color: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* footer */
+footer {
+  background-color: var(--primary);
+  text-align: center;
+  padding: 1rem 0 3rem;
+  margin-top: 3rem;
+}
+
+footer .socials {
+  padding: 1rem 0;
+}
+
+footer .socials a {
+  color: #fff;
+  margin: 1rem;
+}
+
+footer .socials a:hover,
+footer .links a:hover {
+  color: var(--bg);
+}
+
+footer .links {
+  margin-bottom: 1.4rem;
+}
+
+footer .links a {
+  color: #fff;
+  padding: 0.7rem 1rem;
+}
+
+footer .credit {
+  font-size: 0.8rem;
+}
+
+footer .credit a {
+  color: var(--bg);
+  font-weight: 700;
+}
+
+/* media queries */
+
+/* laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+  /* munculkan menu ketika di tablet */
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  /* navbar nya pindahkan ke luar layar dulu */
+  .navbar .navbar-nav {
+    /* mudah menggerakkan, tanpa menggangu elemen di sekitarnya */
+    position: absolute;
+    /* nempel ke atas */
+    top: 100%;
+    /* keluar dari layar */
+    right: -100%;
+    background-color: #fff;
+    width: 30rem;
+    height: 100vh;
+    /* transisi ketika hamburger menu diklik */
+    transition: 0.3s;
+  }
+
+  .navbar .navbar-nav.active {
+    right: 0;
+  }
+
+  .navbar .navbar-nav a {
+    color: var(--bg);
+    /* biar ke bawah */
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  /* border nya ke kiri */
+  .navbar .navbar-nav a::after {
+    transform-origin: 0 0;
+  }
+
+  /* kecilkan garis nya */
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+  }
+
+  .about .row {
+    /* jika dikecilkan, maka akan turun ke bawah */
+    flex-wrap: wrap;
+  }
+
+  .about .row .about-img img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about .row .content {
+    /* hilangkan padding */
+    padding: 0;
+  }
+
+  .about .row .content h3 {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .about .row .content p {
+    font-size: 1.6rem;
+  }
+
+  .project p {
+    font-size: 1.2rem;
+  }
+
+  .contact .row {
+    /* supaya form turun ke bawah */
+    flex-wrap: wrap;
+  }
+
+  .contact .row .map {
+    /* lebih tinggi */
+    height: 30rem;
+  }
+
+  .contact .row form {
+    /* jarak antara map dan form tidak jauh */
+    padding-top: 0;
+  }
+}
+
+/* mobile */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}
